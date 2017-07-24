@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	free_links(t_info info)
+#include "lem.h"
+
+void	free_links(t_info *info)
 {
 	int i;
 
 	i = 0;
-	while ((info->links)[i])
+	while ((info->links)[i].r1)
 	{
 		free((info->links)[i].r1);
 		free((info->links)[i].r2);
-		free((info->links)[i]);
 		++i;
 	}
+	free(info->links);
 }

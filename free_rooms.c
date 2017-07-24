@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 void	free_rooms(t_info *info)
 {
 	int i;
@@ -17,9 +19,10 @@ void	free_rooms(t_info *info)
 	i = 0;
 	free(info->start.name);
 	free(info->end.name);
-	while ((info->rooms)[i])
+	while ((info->rooms)[i].name)
 	{
 		free((info->rooms)[i].name);
-		free((info->rooms)[i++]);
+		++i;
 	}
+	free(info->rooms);
 }

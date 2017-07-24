@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 static int	dash_count(char *str)
 {
 	int i;
@@ -47,11 +49,13 @@ static int	is_line_valid(char *str)
 	i = 0;
 	if (is_line_comment(str))
 		return (1);
-	if (is_line_command(str) != -1)
+	if (is_line_command(str))
 		return (1);
+	if (str[0] == '\0')
+		return (0);
 	if (str[1] == 'L')
 		return (0);
-	if (dash_count != 1)
+	if (dash_count(str) != 1)
 		return (0);
 	while (str[i++] != '-')
 		;

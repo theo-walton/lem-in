@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 int	main(void)
 {
 	t_info info;
 
-	initialize_info(info);
+	if (!initialize_info(&info))
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
 	if (!get_info(&info))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (!check_sufficient_info(info))
-	{
-		write(2, "Error\n", 6);
-		free_rooms(info);
-		free_links(info);
-		return (1);
-	}
+	write(1, "Valid\n", 6);
 }

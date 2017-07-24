@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 int	is_line_comment(char *str)
 {
 	int i;
@@ -19,11 +21,7 @@ int	is_line_comment(char *str)
 		return (0);
 	if (str[0] != '#')
 		return (0);
-	while (str[i] != '\0' && str[i] != '\n')
-	{
-		if (str[i] == '#')
-			return (0);
-		i++;
-	}
+	if (str[1] == '#')
+		return (0);
 	return (1);
 }

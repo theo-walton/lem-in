@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 static int	space_count(char *str)
 {
 	int i;
@@ -55,7 +57,7 @@ static int	is_line_valid(char *str)
 	i = 0;
 	if (is_line_comment(str))
 		return (1);
-	if (is_line_command(str) != -1)
+	if (is_line_command(str))
 		return (1);
 	if (str[1] == 'L')
 		return (0);
@@ -81,8 +83,12 @@ int	get_rooms(char *str, t_info *info, int *i)
 	{
 		if (is_line_comment(str + *i))
 			;
-		else if ((room_type = is_line_command(str + *i)))
-			;
+		else if (is_line_command(str + *i))
+		{
+			if (room_type == 1 || room_type == 2)
+				return (0);
+			room_type = is_line_command(str + *i);
+		}
 		else
 		{
 			if (!add_room(info, room_type, str + *i))

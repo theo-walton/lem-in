@@ -10,24 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 int	get_ant_numbers(char *str, int *i)
 {
 	int k;
 
-	while (is_line_comment(str + *i))
+	while (is_line_comment(str + *i) || is_line_command(str + *i) == 3)
 		go_to_next_line(str, i);
-	k = i;
+	k = *i;
 	if (str[k] == '0')
-		return (NULL);
+		return (0);
 	while (str[k] != '\n' && str[k] != '\0')
 	{
 		if (!ft_isdigit(str[k]) || k - *i > 11)
-			return (NULL);
+			return (0);
 		k++;
 	}
 	k = ft_atoi(str + *i);
 	go_to_next_line(str, i);
 	if (k == -1)
-		return (NULL);
+		return (0);
 	return (k);
 }

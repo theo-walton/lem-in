@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem.h"
+
 static int	is_end(char *str)
 {
 	if (str[2] == 'e' && str[3] == 'n' && str[4] == 'd')
@@ -36,17 +38,13 @@ int	is_line_command(char *str)
 	if (str[0]  != '#' || str[1] != '#')
 		return (0);
 	while (str[i] != '\n' && str[i] != '\0')
-	{
-		if (str[i] == '#')
-			return (-1);
 		++i;
-	}
-	if (i == 4)
+	if (i == 5)
 	{
 		if (is_end(str))
 			return (2);
 	}
-	if (i == 6)
+	if (i == 7)
 	{
 		if (is_start(str))
 			return (1);
