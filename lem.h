@@ -32,5 +32,14 @@ void	go_to_next_line(char *str, int *i);
 int	initialize_info(t_info *info);
 int	is_line_command(char *str);
 int	is_line_comment(char *str);
+int	use_info(t_info *info);
+t_dataroom	*convert_info_to_map(t_info *info);
+int	add_link_data(t_dataroom *room, t_dataroom *rarr, t_info *info);
+void	initialize_room(t_room *basic, t_dataroom *complex, int type);
+char	**get_ant_path(t_dataroom *room_arr);
+double	get_rooms_dist(t_link *link, t_info *info);
+void	print_ants(t_info *info, char **ant_path);
+void	print_result(t_info *info, char ** ant_path, double dfs);
+t_dataroom	*go_to_previous_room(t_dataroom *room);
 
 #endif

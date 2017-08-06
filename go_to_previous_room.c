@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_main.c                                         :+:      :+:    :+:   */
+/*   go_to_previous_room.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/18 14:52:48 by twalton           #+#    #+#             */
-/*   Updated: 2017/07/18 14:52:48 by twalton          ###   ########.fr       */
+/*   Created: 2017/08/02 21:02:30 by twalton           #+#    #+#             */
+/*   Updated: 2017/08/02 21:02:30 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem.h"
 
-int	main(int ac, char **av)
+t_dataroom	*go_to_previous_room(t_dataroom *room)
 {
-	t_info info;
+	int i;
 
-	if (!initialize_info(&info))
+	i = 0;
+	while (room->dfs - room->links[i]->dfs <  room->dists[i] - 0.0001 ||
+	room->dfs - room->links[i]->dfs > room->dists[i] + 0.0001)
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		++i;
 	}
-	if (ac >= 2 && !ft_strcmp(av[1], "-raw"))
-		info.mode = 1;
-	else
-		info.mode = 0;
-	if (!get_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (!use_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	return (room->links[i]);
 }

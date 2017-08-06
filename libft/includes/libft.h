@@ -22,6 +22,9 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+char			*ft_strstroccur(char *main, char *sub, size_t n);
+void			ft_freestrarr(char **strarr);
+int				ft_chrcount(char *str, char c);
 char			*ft_dirty_read(int fd, int size);
 char			*ft_createstr(char c, int chunk_size);
 char			*ft_securejoin(const char *s1, const char *s2);

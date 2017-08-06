@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_main.c                                         :+:      :+:    :+:   */
+/*   ft_chrcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/18 14:52:48 by twalton           #+#    #+#             */
-/*   Updated: 2017/07/18 14:52:48 by twalton          ###   ########.fr       */
+/*   Created: 2017/07/27 00:48:29 by twalton           #+#    #+#             */
+/*   Updated: 2017/07/27 00:48:29 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_chrcount(char *str, char c)
 {
-	t_info info;
+	int ret;
 
-	if (!initialize_info(&info))
+	ret = 0;
+	while (*str)
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		if (*str == c)
+			++ret;
+		++str;
 	}
-	if (ac >= 2 && !ft_strcmp(av[1], "-raw"))
-		info.mode = 1;
-	else
-		info.mode = 0;
-	if (!get_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (!use_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	return (ret);
 }

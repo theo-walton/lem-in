@@ -29,10 +29,21 @@ typedef struct s_link
 typedef struct s_str
 {
 	int ant_num;
+	int mode;
+	char *file;
 	t_room start;
 	t_room end;
 	t_room *rooms;
 	t_link *links;
 }	t_info;
+
+typedef struct s_roomdata
+{
+	int type;
+	char *name;
+	double dfs;
+	struct s_roomdata **links;
+	double *dists;
+}	t_dataroom;
 
 #endif

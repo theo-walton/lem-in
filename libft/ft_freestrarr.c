@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_main.c                                         :+:      :+:    :+:   */
+/*   ft_freestrarr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/18 14:52:48 by twalton           #+#    #+#             */
-/*   Updated: 2017/07/18 14:52:48 by twalton          ###   ########.fr       */
+/*   Created: 2017/07/27 01:26:16 by twalton           #+#    #+#             */
+/*   Updated: 2017/07/27 01:26:16 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem.h"
-
-int	main(int ac, char **av)
+void	ft_freestrarr(char **strarr)
 {
-	t_info info;
+	int i;
 
-	if (!initialize_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (ac >= 2 && !ft_strcmp(av[1], "-raw"))
-		info.mode = 1;
-	else
-		info.mode = 0;
-	if (!get_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (!use_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	i = -1;
+	while (strarr[++i])
+		free(strarr[i]);
+	free(strarr);
 }

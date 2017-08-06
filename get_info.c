@@ -65,6 +65,7 @@ int	get_info(t_info *info)
 	i = 0;
 	if (!(str = ft_dirty_read(0, 1000000)))
 		return (0);
+	info->file = str;
 	if (!(info->ant_num = get_ant_numbers(str, &i)))
 		return (0);
 	if (!get_rooms(str, info, &i))

@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_main.c                                         :+:      :+:    :+:   */
+/*   ft_strstroccur.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/18 14:52:48 by twalton           #+#    #+#             */
-/*   Updated: 2017/07/18 14:52:48 by twalton          ###   ########.fr       */
+/*   Created: 2017/07/27 17:55:30 by twalton           #+#    #+#             */
+/*   Updated: 2017/07/27 17:55:30 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+/*
+** similar to ft_strstr this function will give the nth occurence of a string
+** 'sub' inside the string 'main', or NULL if there is no nth occurence.
+** n >= 1 as valid input.
+*/
+
+char	*ft_strstroccur(char *main, char *sub, size_t n)
 {
-	t_info info;
+	char *p;
 
-	if (!initialize_info(&info))
+	p = main - 1;
+	while (n-- > 0)
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		++p;
+		p = ft_strstr(p, sub);
 	}
-	if (ac >= 2 && !ft_strcmp(av[1], "-raw"))
-		info.mode = 1;
-	else
-		info.mode = 0;
-	if (!get_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (!use_info(&info))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	return (p);
 }

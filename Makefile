@@ -27,6 +27,15 @@ initialize_info.c \
 is_line_command.c \
 is_line_comment.c \
 lem_main.c \
+use_info.c \
+convert_info_to_map.c \
+add_link_data.c \
+initialize_room.c \
+get_ant_path.c \
+get_rooms_dist.c \
+print_ants.c \
+print_result.c \
+go_to_previous_room.c \
 \
 $(addprefix libft/, \
 \
@@ -39,6 +48,13 @@ ft_strcmp.c \
 ft_strdup.c \
 ft_bzero.c \
 ft_strlen.c \
+ft_putnbr_fd.c \
+ft_putchar_fd.c \
+ft_putstr_fd.c \
+ft_putstr.c \
+ft_putnbr.c \
+ft_putchar_fd.c \
+ft_putchar.c \
 ft_memset.c \
 \
 )
